@@ -1,4 +1,4 @@
-# music-album-library-api-rest-gin
+# MusicLibraryAPIREST
 Simple API REST to GET, POST, PUT and  DELETE music albums using Go and GIN framework. 
 To test the application i used POSTMAN in order to emule GET, POST, PUT and DELETE http methods.
 
