@@ -20,59 +20,62 @@ To test the application I used POSTMAN in order to emule GET, POST, PUT and DELE
 ### 1) INITILIZE SERVER LISTENING
 
 **We run main.go in order to execute the code and run the local server:**
-
 ![initialize_server](https://user-images.githubusercontent.com/71451124/211159138-f6e1a5cc-eace-480d-9977-2e933cad6b03.png)
 ![initialize_server_code](https://user-images.githubusercontent.com/71451124/211159180-190d183f-558b-4f21-a065-2f3e8bb42677.png)
 
+
 **We can check that the server is indeed running on the path: localhost:8080 in our browser. 
 GET method used as default:**
-
-
 ![localhost_on_browser_1](https://user-images.githubusercontent.com/71451124/211159958-08c2b363-9e2e-417f-95a0-636374221fcf.png) ![localhost_on_browser_2](https://user-images.githubusercontent.com/71451124/211159963-667ea78b-e22a-421d-b9fd-d4e727b79782.png)
+
 
 ### 2) GET HTTP REQUEST
 **We use POSTMAN to test our API in a simply manner.**
 **First, we select the GET method and set the path (localhost:8080) and SEND the request:**
-
 ![get_request_1](https://user-images.githubusercontent.com/71451124/211167743-f107083f-5716-4e34-8c77-12446bda0342.png)
 
-**When the SEND button is clicked, the func 'getAlbums' is called by the handler of "/albums" route and is executed:**
 
+**When the SEND button is clicked, the func 'getAlbums' is called by the handler of "/albums" route and is executed:**
 ![get_request_3](https://user-images.githubusercontent.com/71451124/211168168-9e2e4c48-e8fd-4ced-b5a6-e2c22bd90d6d.png)
 ![get_request_4](https://user-images.githubusercontent.com/71451124/211168169-a69eb979-be2d-4a78-a9dc-3bf3b8e912f8.png)
 
 
 **We get the response from the request and we can see that we get the whole list of our music albums and STATUS 200 OK as response:**
-
 ![get_request_2](https://user-images.githubusercontent.com/71451124/211168212-3d3c6fe6-0975-42a3-b5d8-b6eb7cb6baa0.png)
+
 
 **We can also use a GET Request searching for an Album by ID, using the route: "/albums/** id_number **".
 For example, we can try to request the album #4:**
-
 ![get_request_6](https://user-images.githubusercontent.com/71451124/211176192-52b05cf5-4b6c-4478-8628-98127daa941e.png)
 
-**When the SEND button is clicked, the func 'getAlbumsByID' is called by the handler of "/albums/id" route and is executed:**
 
+**When the SEND button is clicked, the func 'getAlbumsByID' is called by the handler of "/albums/id" route and is executed:**
 ![get_request_8](https://user-images.githubusercontent.com/71451124/211176290-16b9d26b-a614-42a3-9671-88bfc460f490.png)
 ![get_request_7](https://user-images.githubusercontent.com/71451124/211176265-b996e8a8-a96a-4b1c-86aa-8d1c76df3897.png)
 
-**We can see that we get as a response the music album requested by its ID (4), the data and a STATUS OK:**
 
+**We can see that we get as a response the music album requested by its ID (4), the data and a STATUS OK:**
 ![get_request_5](https://user-images.githubusercontent.com/71451124/211175661-15a95d43-6b34-44ca-8316-5917bdfec1e3.png)
+
 
 ### 3) POST HTTP REQUEST
 **Now, we´re going to POST a new Album in our library.
 To do that, first we prepare the METHOD (POST), ROUTE (localhost:8080/albums) and we must fill the Body section with the NEW MUSIC ALBUM. 
 In most cases, its used JSON format:**
-
 ![post_request_1](https://user-images.githubusercontent.com/71451124/211179078-f660cf20-435b-4337-94e6-49aeeedb6afc.png)
 
-**When the request is sent, the handler for the route is executed and the function 'postAlbums' is called:
 
+**When the request is sent, the handler for the route is executed and the function 'postAlbums' is called:**
 ![post_request_2](https://user-images.githubusercontent.com/71451124/211179182-036d9893-01fa-431e-9e43-100d95f5c57f.png)
 
-**If everything went good, we can see that the New Music Album was created and added to the library with a 201 Created Status code:**
 
+**If everything went good, we can see that the New Music Album was created and added to the library with a 201 Created Status code:**
 ![post_request_4](https://user-images.githubusercontent.com/71451124/211179307-2555a9b6-a12d-4527-84a9-6f8002eba2aa.png)
 
 
+**If we try to Post an already existing ID (#11 from the previous example), it will response with a Status 400 code:**
+![post_request_5](https://user-images.githubusercontent.com/71451124/211179563-898e3b84-1bfa-4f8c-bb82-d97658a5b15b.png)
+
+
+**The same response will occur if the Album name already exists:**
+![post_request_6](https://user-images.githubusercontent.com/71451124/211179610-8d3d58bf-b216-4430-b74c-c9f5f5fcb287.png)
