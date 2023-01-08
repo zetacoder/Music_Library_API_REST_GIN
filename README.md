@@ -2,7 +2,8 @@
 Simple API REST to GET, POST, PUT and  DELETE music albums using Go and GIN framework. 
 To test the application i used POSTMAN in order to emule GET, POST, PUT and DELETE http methods.
 
-In order to maintain the simplicity, and show easily the HTTP requests, i made a list of 10 music albums alocated in the base code. In the near future, i will implement a conecction with DB.
+In order to maintain the simplicity, and show easily the HTTP requests, I made a list of ten music albums hosted in the base code. 
+In the near future, i will implement a conecction with DB.
 
 ## STEP BY STEP GENERAL USE
  
@@ -38,7 +39,7 @@ GET method used as default:**
 
 ![get_request_1](https://user-images.githubusercontent.com/71451124/211167743-f107083f-5716-4e34-8c77-12446bda0342.png)
 
-**When the SEND button is clicked, the func 'getAlbums' is called by the handler of "/albums" route and is executed:
+**When the SEND button is clicked, the func 'getAlbums' is called by the handler of "/albums" route and is executed:**
 
 ![get_request_3](https://user-images.githubusercontent.com/71451124/211168168-9e2e4c48-e8fd-4ced-b5a6-e2c22bd90d6d.png)
 ![get_request_4](https://user-images.githubusercontent.com/71451124/211168169-a69eb979-be2d-4a78-a9dc-3bf3b8e912f8.png)
@@ -47,5 +48,20 @@ GET method used as default:**
 **We get the response from the request and we can see that we get the whole list of our music albums and STATUS 200 OK as response:**
 
 ![get_request_2](https://user-images.githubusercontent.com/71451124/211168212-3d3c6fe6-0975-42a3-b5d8-b6eb7cb6baa0.png)
+
+**We can also use a GET Request searching for an Album by ID, using the route: "/albums/* *id_number* *".
+For example, we can try to request the album #4:**
+
+![get_request_6](https://user-images.githubusercontent.com/71451124/211176192-52b05cf5-4b6c-4478-8628-98127daa941e.png)
+
+**When the SEND button is clicked, the func 'getAlbumsByID' is called by the handler of "/albums/id" route and is executed:**
+
+![get_request_8](https://user-images.githubusercontent.com/71451124/211176290-16b9d26b-a614-42a3-9671-88bfc460f490.png)
+![get_request_7](https://user-images.githubusercontent.com/71451124/211176265-b996e8a8-a96a-4b1c-86aa-8d1c76df3897.png)
+
+**We can see that we get as a response the music album requested by its ID (4), the data and a status OK:**
+
+![get_request_5](https://user-images.githubusercontent.com/71451124/211175661-15a95d43-6b34-44ca-8316-5917bdfec1e3.png)
+
 
 
