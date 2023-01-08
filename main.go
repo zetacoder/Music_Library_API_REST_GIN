@@ -1,9 +1,8 @@
 package main
 
 /*
-API-REST-GIN is a simple API REST that allows to GET, POST and DELETE some music albums 
-using Gin framework, net/http package and Thunder Client (extension) 
-to emulate the main HTTP requests (similar to Express.js).
+API-REST-GIN is a simple API REST that allows to GET, POST, PUT and DELETE some music albums 
+using Gin framework, net/http package and POSTMAN to try the HTTP requests.
 */
 
 import (
@@ -21,7 +20,7 @@ type album struct {
 
 // Creating the data of type []album who will contain the information.
 var albums = []album{
-	{ID: "1", Title: "Familia", Artist: "Camila Cabello", Year: 2022},
+	{ID: "1", Title: "El Madrileño", Artist: "C Tangana", Year: 2021},
 	{ID: "2", Title: "Hybrid Theory", Artist: "Linkin Park", Year: 2002},
 	{ID: "3", Title: "Ser Humano", Artist: "Tiro de Gracia", Year: 1997},
 	{ID: "4", Title: "Un Verano sin Ti", Artist: "Bad Bunny", Year: 2022},
@@ -31,7 +30,6 @@ var albums = []album{
 	{ID: "8", Title: "Swimming", Artist: "Mac Miller", Year: 2008},
 	{ID: "9", Title: "Mr Morale & The Big Steppers", Artist: "Kendrick Lamar", Year: 2022},
 	{ID: "10", Title: "Muerte", Artist: "Canserbero", Year: 2012},
-	
 }
 
 // getAlbums captures the client request and return a JSON data and a Status.
@@ -48,9 +46,21 @@ func postAlbums(c *gin.Context) {
 		return
 	}
 
-	albums = append(albums, newAlbum) // The new data is appended to the albums that already exists.
+	// We check if the new album is repeated or have an existing ID 
+	// and response with a 400 bad request status code.
+	for _, a := range albums {
+		if a.ID == newAlbum.ID {
+			c.IndentedJSON(http.StatusBadRequest, gin.H{"message":"ID already exists."})
+			return
+		}
+		if a.Title == newAlbum.Title {
+			c.IndentedJSON(http.StatusBadRequest, gin.H{"message":"Album already exists."})
+			return
+		}
+	}
+	// If everything went good, the new album is added to the list.
+	albums = append(albums, newAlbum) 
 	c.IndentedJSON(http.StatusCreated, albums) // Return to the cliente a Status that data were created and the new album. 
-
 }
 
 // getAlbumByID takes gin Context 
@@ -86,18 +96,40 @@ func deleteAlbumByID(c *gin.Context) {
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message" : "Cannot delete album. Not found"})
 }
 
-func main(){
+func replaceAlbumByID(c *gin.Context) {
+	id := c.Param("id")
+	var newAlbums []album 
 
-	
+	var newAlbum album
+
+	 // We send the reference to the variable and bind to JSON.
+	if err := c.BindJSON(&newAlbum); err != nil {
+		return
+	}
+
+	for i, a := range albums {
+		if a.ID == id {
+			newAlbums = append(newAlbums, albums[:i]...)
+			newAlbums = append(newAlbums,newAlbum)
+			newAlbums = append(newAlbums, albums[i+1:]...)
+			albums = newAlbums
+			c.IndentedJSON(http.StatusOK, newAlbums)
+			return
+		} 
+	}
+	c.IndentedJSON(http.StatusNotFound, gin.H{"message" : "Cannot replace album. ID not found"})
+}
+
+func main(){
 	
 	router := gin.Default() // Initialize router
 
 	// Methods, routes and functions.
 	router.GET("/albums", getAlbums) // Request to the server the data from all Albums.
-	router.POST("/albums", postAlbums) // Post new album into the server.
 	router.GET("/albums/:id", getAlbumByID) //  Request to server especific album ID and return it.
-	router.DELETE("/albums/:id", deleteAlbumByID) // Delete search for an album ID. If if finds it, is erased.
+	router.POST("/albums", postAlbums) // Create new album and add it to the music library.
+	router.PUT("/albums/:id",replaceAlbumByID) // Replace one album with another if it match and existing ID.
+	router.DELETE("/albums/:id", deleteAlbumByID) // Delete album by ID. If it matchs, is erased.
 	router.Run("localhost:8080") // Executes the server in local machine.
 }
-
 
