@@ -49,7 +49,7 @@ GET method used as default:**
 
 ![get_request_2](https://user-images.githubusercontent.com/71451124/211168212-3d3c6fe6-0975-42a3-b5d8-b6eb7cb6baa0.png)
 
-**We can also use a GET Request searching for an Album by ID, using the route: "/albums/* *id_number* *".
+**We can also use a GET Request searching for an Album by ID, using the route: "/albums/*** *id_number* ***".
 For example, we can try to request the album #4:**
 
 ![get_request_6](https://user-images.githubusercontent.com/71451124/211176192-52b05cf5-4b6c-4478-8628-98127daa941e.png)
@@ -59,7 +59,7 @@ For example, we can try to request the album #4:**
 ![get_request_8](https://user-images.githubusercontent.com/71451124/211176290-16b9d26b-a614-42a3-9671-88bfc460f490.png)
 ![get_request_7](https://user-images.githubusercontent.com/71451124/211176265-b996e8a8-a96a-4b1c-86aa-8d1c76df3897.png)
 
-**We can see that we get as a response the music album requested by its ID (4), the data and a status OK:**
+**We can see that we get as a response the music album requested by its ID (4), the data and a STATUS OK:**
 
 ![get_request_5](https://user-images.githubusercontent.com/71451124/211175661-15a95d43-6b34-44ca-8316-5917bdfec1e3.png)
 
