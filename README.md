@@ -46,7 +46,7 @@ GET method used as default:**
 
 ![get_request_2](https://user-images.githubusercontent.com/71451124/211168212-3d3c6fe6-0975-42a3-b5d8-b6eb7cb6baa0.png)
 
-**We can also use a GET Request searching for an Album by ID, using the route: "/albums/*** *id_number* ***".
+**We can also use a GET Request searching for an Album by ID, using the route: "/albums/** id_number **".
 For example, we can try to request the album #4:**
 
 ![get_request_6](https://user-images.githubusercontent.com/71451124/211176192-52b05cf5-4b6c-4478-8628-98127daa941e.png)
@@ -60,5 +60,19 @@ For example, we can try to request the album #4:**
 
 ![get_request_5](https://user-images.githubusercontent.com/71451124/211175661-15a95d43-6b34-44ca-8316-5917bdfec1e3.png)
 
+### 3) POST HTTP REQUEST
+**Now, we´re going to POST a new Album in our library.
+To do that, first we prepare the METHOD (POST), ROUTE (localhost:8080/albums) and we must fill the Body section with the NEW MUSIC ALBUM. 
+In most cases, its used JSON format:**
+
+![post_request_1](https://user-images.githubusercontent.com/71451124/211179078-f660cf20-435b-4337-94e6-49aeeedb6afc.png)
+
+**When the request is sent, the handler for the route is executed and the function 'postAlbums' is called:
+
+![post_request_2](https://user-images.githubusercontent.com/71451124/211179182-036d9893-01fa-431e-9e43-100d95f5c57f.png)
+
+**If everything went good, we can see that the New Music Album was created and added to the library with a 201 Created Status code:**
+
+![post_request_4](https://user-images.githubusercontent.com/71451124/211179307-2555a9b6-a12d-4527-84a9-6f8002eba2aa.png)
 
 
