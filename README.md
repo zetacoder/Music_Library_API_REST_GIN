@@ -21,8 +21,7 @@ To test the application I used POSTMAN in order to emule GET, POST, PUT and DELE
 ![initialize_server](https://user-images.githubusercontent.com/71451124/211159138-f6e1a5cc-eace-480d-9977-2e933cad6b03.png)
 ![initialize_server_code](https://user-images.githubusercontent.com/71451124/211159180-190d183f-558b-4f21-a065-2f3e8bb42677.png)
 
-**We can check that the server is indeed running on the path: localhost:8080 in our browser. 
-GET method used as default:**
+**We can check that the server is indeed running on the path: localhost:8080 in our browser:**
 ![localhost_on_browser_1](https://user-images.githubusercontent.com/71451124/211159958-08c2b363-9e2e-417f-95a0-636374221fcf.png) ![localhost_on_browser_2](https://user-images.githubusercontent.com/71451124/211159963-667ea78b-e22a-421d-b9fd-d4e727b79782.png)
 
 ### 2) GET HTTP REQUEST
