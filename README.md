@@ -95,4 +95,5 @@ In this case, it would be localhost:8080/albums/3**
 **If we try to DELETE a non-existing element, for example ID #100, it will throw a 404 Not Found Status:**
 ![delete_request_4](https://user-images.githubusercontent.com/71451124/211213706-3db033bb-ea9d-4f0d-8fc0-c59323ebb27d.png)
 
-
+## CONCLUSION
+By way of conclusion we can say that using GIN framework to create a REST API application is extremely simple, useful, powerful and with few lines of code, providing the necessary functionality to deploy a server securely, handle responses to and from the client and all with the simple and elegant Golang syntax.
